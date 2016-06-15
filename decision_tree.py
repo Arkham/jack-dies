@@ -1,7 +1,7 @@
 import utils
 import numpy as np
-from sklearn import tree, ensemble
 import pandas as pd
+from sklearn import tree
 
 train = pd.read_csv("./data/train.csv")
 test = pd.read_csv("./data/test.csv")
@@ -47,21 +47,3 @@ test_features_two = test[["Pclass", "Age", "Sex", "Fare", "SibSp", "Parch", "Emb
 prediction_two = decision_tree_two.predict(test_features_two)
 utils.write_prediction(prediction_two, "results/decision_tree_two.csv")
 
-print "\nUse Random Forest classifier"
-
-features_forest = train[["Pclass", "Age", "Sex", "Fare", "SibSp", "Parch", "Embarked"]].values
-forest = ensemble.RandomForestClassifier(
-    max_depth = 7,
-    min_samples_split = 2,
-    n_estimators = 10000,
-    random_state = 1,
-    n_jobs = -1
-)
-forest = forest.fit(features_forest, target)
-
-print(forest.feature_importances_)
-print(forest.score(features_forest, target))
-
-test_features_forest = test[["Pclass", "Age", "Sex", "Fare", "SibSp", "Parch", "Embarked"]].values
-prediction_forest = forest.predict(test_features_forest)
-utils.write_prediction(prediction_forest, "results/decision_tree_forest.csv")
