@@ -27,11 +27,7 @@ print "\nTry on test set"
 
 test_features = test[["Pclass", "Sex", "Age", "Fare"]].values
 prediction = decision_tree.predict(test_features)
-
-PassengerId = np.array(test["PassengerId"]).astype(int)
-solution = pd.DataFrame(prediction, PassengerId, columns = ["Survived"])
-print(solution.shape)
-solution.to_csv("results/decision_tree.csv", index_label = ["PassengerId"])
+utils.write_prediction(prediction, "results/decision_tree.csv")
 
 print "\nCorrect overfitting"
 
@@ -49,11 +45,7 @@ print "\nWrite new predicition"
 
 test_features_two = test[["Pclass", "Age", "Sex", "Fare", "SibSp", "Parch", "Embarked"]].values
 prediction_two = decision_tree_two.predict(test_features_two)
-
-PassengerId = np.array(test["PassengerId"]).astype(int)
-solution_two = pd.DataFrame(prediction_two, PassengerId, columns = ["Survived"])
-print(solution_two.shape)
-solution_two.to_csv("results/decision_tree_two.csv", index_label = ["PassengerId"])
+utils.write_prediction(prediction_two, "results/decision_tree_two.csv")
 
 print "\nUse Random Forest classifier"
 
@@ -72,8 +64,4 @@ print(forest.score(features_forest, target))
 
 test_features_forest = test[["Pclass", "Age", "Sex", "Fare", "SibSp", "Parch", "Embarked"]].values
 prediction_forest = forest.predict(test_features_forest)
-
-PassengerId = np.array(test["PassengerId"]).astype(int)
-solution_forest = pd.DataFrame(prediction_forest, PassengerId, columns = ["Survived"])
-print(solution_forest.shape)
-solution_forest.to_csv("results/decision_tree_forest.csv", index_label = ["PassengerId"])
+utils.write_prediction(prediction_forest, "results/decision_tree_forest.csv")
