@@ -1,7 +1,7 @@
 import pandas as pd
 
-train = pd.read_csv("./train.csv")
-test = pd.read_csv("./test.csv")
+train = pd.read_csv("./data/train.csv")
+test = pd.read_csv("./data/test.csv")
 
 print "Survived / passed counts"
 print(train["Survived"].value_counts())
@@ -27,7 +27,7 @@ print "\nPredict 1 if female and 0 if male"
 test_one = test
 test_one["Survived"] = 0
 test_one.loc[test_one["Sex"] == 'female', "Survived"] = 1
-test_one.to_csv("gender_model.csv", index = False, columns = ["PassengerId", "Survived"])
+test_one.to_csv("results/gender_model.csv", index = False, columns = ["PassengerId", "Survived"])
 
 print "\nCheck how accurate this model is on training set"
 train["Hyp"] = 0
