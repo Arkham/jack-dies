@@ -1,7 +1,7 @@
 import utils
 import numpy as np
 import pandas as pd
-from sklearn import linear_model, preprocessing, cross_validation
+from sklearn import linear_model, preprocessing, model_selection
 
 train = pd.read_csv("./data/train.csv")
 test = pd.read_csv("./data/test.csv")
@@ -23,7 +23,7 @@ logistic = linear_model.LogisticRegression()
 logistic.fit(features, target)
 print(logistic.score(features, target))
 
-scores = cross_validation.cross_val_score(logistic, features, target, scoring='accuracy', cv=10)
+scores = model_selection.cross_val_score(logistic, features, target, scoring='accuracy', cv=10)
 print scores
 print scores.mean()
 
@@ -38,7 +38,7 @@ clf = linear_model.LogisticRegression(C=10)
 clf.fit(features_, target)
 print(clf.score(features_, target))
 
-scores = cross_validation.cross_val_score(clf, features_, target, scoring='accuracy', cv=10)
+scores = model_selection.cross_val_score(clf, features_, target, scoring='accuracy', cv=10)
 print scores
 print scores.mean()
 

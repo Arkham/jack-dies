@@ -1,7 +1,7 @@
 import utils
 import numpy as np
 import pandas as pd
-from sklearn import tree, cross_validation
+from sklearn import tree, model_selection
 
 train = pd.read_csv("./data/train.csv")
 test = pd.read_csv("./data/test.csv")
@@ -43,7 +43,7 @@ print(decision_tree_two.feature_importances_)
 print(decision_tree_two.score(features_two, target))
 tree.export_graphviz(decision_tree_two, feature_names=feature_names, out_file="./graphs/decision_tree_two.dot")
 
-scores = cross_validation.cross_val_score(decision_tree_two, features_two, target, scoring='accuracy', cv=10)
+scores = model_selection.cross_val_score(decision_tree_two, features_two, target, scoring='accuracy', cv=10)
 print scores
 print scores.mean()
 

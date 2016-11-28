@@ -1,7 +1,7 @@
 import utils
 import numpy as np
 import pandas as pd
-from sklearn import ensemble, cross_validation, grid_search
+from sklearn import ensemble, model_selection, grid_search
 
 train = pd.read_csv("./data/train.csv")
 test = pd.read_csv("./data/test.csv")
@@ -52,7 +52,7 @@ gbm = gbm.fit(features, target)
 print(gbm.feature_importances_)
 print(gbm.score(features, target))
 
-# scores = cross_validation.cross_val_score(gbm, features, target, scoring='accuracy', cv=20)
+# scores = model_selection.cross_val_score(gbm, features, target, scoring='accuracy', cv=20)
 # print scores
 # print scores.mean()
 

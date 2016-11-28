@@ -2,7 +2,7 @@ import pandas as pd
 import statsmodels.api as sm
 from patsy import dmatrices
 import matplotlib.pyplot as plt
-from sklearn import cross_validation
+from sklearn import model_selection
 
 # load data
 df = pd.read_csv("data/train.csv")

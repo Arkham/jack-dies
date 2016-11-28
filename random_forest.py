@@ -1,7 +1,7 @@
 import utils
 import numpy as np
 import pandas as pd
-from sklearn import ensemble, cross_validation
+from sklearn import ensemble, model_selection
 
 train = pd.read_csv("./data/train.csv")
 test = pd.read_csv("./data/test.csv")
@@ -31,7 +31,7 @@ forest = forest.fit(features_forest, target)
 print(forest.feature_importances_)
 print(forest.score(features_forest, target))
 
-scores = cross_validation.cross_val_score(forest, features_forest, target, scoring='accuracy', cv=10)
+scores = model_selection.cross_val_score(forest, features_forest, target, scoring='accuracy', cv=10)
 print scores
 print scores.mean()
 
