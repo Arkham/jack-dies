@@ -8,9 +8,9 @@ You want to install python from homebrew
 
 `brew install python`
 
-You want to install `virtualenv` and `virtualenv-wrapper`
+You want to install `virtualenv` and `virtualenvwrapper`
 
-`pip install virtualenv && pip install virtualenv-wrapper`
+`pip install virtualenv && pip install virtualenvwrapper`
 
 Then create a new virtualenv and activate it
 
